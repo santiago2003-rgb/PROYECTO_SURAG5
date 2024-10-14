@@ -8,85 +8,90 @@ import java.util.regex.Pattern;
 
 public class ValidacionPaciente {
 
-    //1. INYECTAR UN OBJETO DE LA CLASE MODELO
-    //INYECTAR = TRAER UNA CLASE Y USARLA DENTRO DE OTRA
     private Paciente paciente = new Paciente();
 
-    //2. CREAMOS UN METODO PARA CADA CAMPO QUE QUIERO VALIDAR
     public boolean validarNombres(String nombres){
-        //1. SE CONSULTA UNA EXPRESION REGULAR ALMACENANDOLA EN UNA VARIABLE TIPO STRING
         String expresionRegular = "^[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s]+$";
 
-        //2.ACTIVAR EL PATRON
         Pattern patron = Pattern.compile(expresionRegular);
 
-        //3. SE BUSCA COINCIDENCIA ENTRE LA CADENA Y EL PATRON
         Matcher coincidencia = patron.matcher(nombres);
 
-        //4. INDICO SI HUBO O NO HUBO COINCIDENCIA
         if (coincidencia.find()) {
             return true;
         } else {
             return false;
         }
     }
-    public boolean validarFechaNacimiento(LocalDate fecha) {}
+
+    public boolean validarFechaNacimiento(LocalDate fecha) {
+
+    }
     public boolean validarCiudad(String ciudad){
-        //1. SE CONSULTA UNA EXPRESION REGULAR ALMACENANDOLA EN UNA VARIABLE TIPO STRING
-        String expresionRegular = "^[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s]+$";
+        String expresionRegularDos = "^[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s]+$";
 
-        //2.ACTIVAR EL PATRON
-        Pattern patron = Pattern.compile(expresionRegular);
+        Pattern patronDos = Pattern.compile(expresionRegularDos);
 
-        //3. SE BUSCA COINCIDENCIA ENTRE LA CADENA Y EL PATRON
-        Matcher coincidencia = patron.matcher(ciudad);
+        Matcher coincidenciaDos = patronDos.matcher(ciudad);
 
-        //4. INDICO SI HUBO O NO HUBO COINCIDENCIA
-        if (coincidencia.find()) {
+        if (coincidenciaDos.find()) {
             return  true;
         } else {
             return false;
         }
     }
+
     public boolean validarCorreo(String correo){
-        //1. SE CONSULTA UNA EXPRESION REGULAR ALMACENANDOLA EN UNA VARIABLE TIPO STRING
-        String expresionRegular = "^correo@sura\\.com\\.co$";
+        String expresionRegularTres = "^correo@sura\\.com\\.co$";
 
-        //2.ACTIVAR EL PATRON
-        Pattern patron = Pattern.compile(expresionRegular);
+        Pattern patronTres = Pattern.compile(expresionRegularTres);
 
-        //3. SE BUSCA COINCIDENCIA ENTRE LA CADENA Y EL PATRON
-        Matcher coincidencia = patron.matcher(correo);
+        Matcher coincidenciaTres = patronTres.matcher(correo);
 
-        //4. INDICO SI HUBO O NO HUBO COINCIDENCIA
-        if (coincidencia.find()) {
+        if (coincidenciaTres.find()) {
             return true;
         } else {
             return false;
         }
     }
+
     public boolean validarTelefono(String telefono){
 
-        //1. SE CONSULTA UNA EXPRESION REGULAR ALMACENANDOLA EN UNA VARIABLE TIPO STRING
-        String expresionRegular = "^[0-9]+$";
+        String expresionRegularCuatro = "^[0-9]+$";
 
-        //2.ACTIVAR EL PATRON
-        Pattern patron = Pattern.compile(expresionRegular);
+        Pattern patronCuatro = Pattern.compile(expresionRegularCuatro);
 
-        //3. SE BUSCA COINCIDENCIA ENTRE LA CADENA Y EL PATRON
-        Matcher coincidencia = patron.matcher(telefono);
+        Matcher coincidenciaCuatro = patronCuatro.matcher(telefono);
 
-        //4. INDICO SI HUBO O NO HUBO COINCIDENCIA
-        if (coincidencia.find()) {
+        if (coincidenciaCuatro.find()) {
             return true;
         } else {
             return false;
         }
     }
-    public boolean validarIps(String ips){}
-    public boolean validarGrupoIngresos(String grupoIngresos){}
-    public boolean validarFechaAfiliacion(LocalDate fechaAfiliacion){}
 
+    public boolean validarIps(String ips){
+        String expresionRegularQuinto = "^.{0,50}$";
 
+        Pattern patronQuinto = Pattern.compile(expresionRegularQuinto);
 
+        Matcher coincidenciaQuinto = patronQuinto.matcher(ips);
+
+        if (coincidenciaQuinto.find()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean validarGrupoIngresos(String grupoIngresos){
+        if (grupoIngresos.toUpperCase().equals("A") || grupoIngresos.toUpperCase().equals("B") ||grupoIngresos.toUpperCase().equals("C")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean validarFechaAfiliacion(LocalDate fechaAfiliacion){
+
+    }
 }
