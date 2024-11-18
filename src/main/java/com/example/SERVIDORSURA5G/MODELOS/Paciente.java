@@ -1,10 +1,12 @@
 package com.example.SERVIDORSURA5G.MODELOS;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
- @Entity
+@Entity
  @Table(name = "pacientes")
 
 public class Paciente {
@@ -22,6 +24,23 @@ public class Paciente {
     private String grupoIngresos; //SOLO SE ADMITE A, B O C EN MAYUSCULA
     private Boolean tienePoliza;
     private LocalDate fechaAfiliacion; //NO PUEDE SER MENOR A 2010
+
+    @ManyToOne
+    @JoinColumn(name = "fk_medico", referencedColumnName = "id")
+    @JsonManagedReference
+    private Medico medico;
+
+    @OneToMany(mappedBy = "paciente")
+    @JsonManagedReference
+    private List<Medicamento> medicamentos;
+
+    @OneToMany(mappedBy = "paciente")
+    @JsonManagedReference
+    private List<Enfermedad> enfermedads;
+
+    @OneToMany(mappedBy = "paciente")
+    @JsonManagedReference
+    private List<SignoVital> signoVitals;
 
     public Paciente() {
     }

@@ -15,6 +15,10 @@ public class SignoVital {
     private String valor;
     private LocalDate fechaMedida;
 
+    @ManyToOne
+    @JoinColumn(name = "fk_paciente", referencedColumnName = "id")
+    private Paciente paciente;
+
     public SignoVital() {
     }
 

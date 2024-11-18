@@ -15,6 +15,10 @@ public class Enfermedad {
     private String grado;
     private Double probavilidadVida;
 
+    @ManyToOne
+    @JoinColumn(name = "fk_paciente", referencedColumnName = "id")
+    private Paciente paciente;
+
     public Enfermedad() {
     }
 
