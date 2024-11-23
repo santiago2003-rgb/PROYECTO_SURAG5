@@ -1,5 +1,6 @@
 package com.example.SERVIDORSURA5G.MODELOS;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -27,7 +28,7 @@ public class Paciente {
 
     @ManyToOne
     @JoinColumn(name = "fk_medico", referencedColumnName = "id")
-    @JsonManagedReference
+    @JsonBackReference
     private Medico medico;
 
     @OneToMany(mappedBy = "paciente")

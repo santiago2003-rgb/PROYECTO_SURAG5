@@ -9,5 +9,4 @@ public class Servidorsura5GApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(Servidorsura5GApplication.class, args);
 	}
-
 }
