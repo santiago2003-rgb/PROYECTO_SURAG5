@@ -12,18 +12,17 @@ import java.util.List;
 
 public class Paciente {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String nombres; //35 LETRAS Y SOLO LETRAS
+    private String nombres; // nombre
     private LocalDate anioNacimiento; //MAXIMO 1900
     private String ciudad; //VALIDAR 40 CARACTERESY SOLO LETRAS
     private String correo; //CORRO VALIDO @SURA.COM.CO
     private String telefono; //MAXIMO 12 CARACTERES Y SOLO NUMEROS
     private String ips; //MAXIMO 50 CARACTERES
     private String grupoIngresos; //SOLO SE ADMITE A, B O C EN MAYUSCULA
-    private Boolean tienePoliza;
+    private Boolean tienePoliza; //POLIZAAAAA
     private LocalDate fechaAfiliacion; //NO PUEDE SER MENOR A 2010
 
     @ManyToOne
@@ -46,7 +45,7 @@ public class Paciente {
     public Paciente() {
     }
 
-    public Paciente(long id, String nombres, LocalDate anioNacimiento, String ciudad, String correo, String telefono, String ips, String grupoIngresos, Boolean tienePoliza, LocalDate fechaAfiliacion) {
+    public Paciente(long id, String nombres, LocalDate anioNacimiento, String ciudad, String correo, String telefono, String ips, String grupoIngresos, Boolean poliza, LocalDate fechaAfiliacion) {
         this.id = id;
         this.nombres = nombres;
         this.anioNacimiento = anioNacimiento;

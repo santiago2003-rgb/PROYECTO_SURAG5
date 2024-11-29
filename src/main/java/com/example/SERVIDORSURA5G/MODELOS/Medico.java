@@ -13,15 +13,15 @@ public class Medico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombres; //35 CARACTERES Y SOLO LETRAS
+    private String nombres; //35 CARACTERES Y SOLO LETRAS //nombre
     private String matriculaProfesional; //20 CARACTERES
     private String especialidad; //20 CARACTERES
     private String salario; //SOLO POSITIVOS MENOS DE 10 MEGAS Y MAXIMO 20
     private String ips; //50 CARACTERES
     private String correo;
     private String telefono; //12 CARACTERES
-    private String direccion; //50 CARACTERES
-    private Boolean disponibleFinDeSemana;
+    private String direccion; //50 CARACTERES //DIRECCIONCONSULTORIO
+    private Boolean disponibleFinDeSemana; //FINDESEMANADISPONIBLE
 
     @OneToMany(mappedBy = "medico")
     @JsonManagedReference

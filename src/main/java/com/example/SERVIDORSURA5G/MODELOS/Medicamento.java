@@ -20,8 +20,8 @@ public class Medicamento {
     private String laboratorio;
     private LocalDate fechaCaducidad;
     private String contraIndicaciones;
-    private String registro;
-    private Boolean tieneCopago;
+    private String registro; //regirstroInvima
+    private Boolean tieneCopago; //copago
 
     @ManyToOne
     @JoinColumn(name = "fk_paciente", referencedColumnName = "id")
