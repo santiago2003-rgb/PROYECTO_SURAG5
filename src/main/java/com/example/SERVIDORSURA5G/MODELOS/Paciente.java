@@ -15,14 +15,14 @@ public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String nombres; // nombre
+    private String nombre; // nombre
     private LocalDate anioNacimiento; //MAXIMO 1900
     private String ciudad; //VALIDAR 40 CARACTERESY SOLO LETRAS
     private String correo; //CORRO VALIDO @SURA.COM.CO
     private String telefono; //MAXIMO 12 CARACTERES Y SOLO NUMEROS
     private String ips; //MAXIMO 50 CARACTERES
     private String grupoIngresos; //SOLO SE ADMITE A, B O C EN MAYUSCULA
-    private Boolean tienePoliza; //POLIZAAAAA
+    private Boolean poliza; //POLIZAAAAA
     private LocalDate fechaAfiliacion; //NO PUEDE SER MENOR A 2010
 
     @ManyToOne
@@ -45,17 +45,21 @@ public class Paciente {
     public Paciente() {
     }
 
-    public Paciente(long id, String nombres, LocalDate anioNacimiento, String ciudad, String correo, String telefono, String ips, String grupoIngresos, Boolean poliza, LocalDate fechaAfiliacion) {
+    public Paciente(long id, String nombre, LocalDate anioNacimiento, String ciudad, String correo, String telefono, String ips, String grupoIngresos, Boolean poliza, LocalDate fechaAfiliacion, Medico medico, List<Medicamento> medicamentos, List<Enfermedad> enfermedads, List<SignoVital> signoVitals) {
         this.id = id;
-        this.nombres = nombres;
+        this.nombre = nombre;
         this.anioNacimiento = anioNacimiento;
         this.ciudad = ciudad;
         this.correo = correo;
         this.telefono = telefono;
         this.ips = ips;
         this.grupoIngresos = grupoIngresos;
-        this.tienePoliza = tienePoliza;
+        this.poliza = poliza;
         this.fechaAfiliacion = fechaAfiliacion;
+        this.medico = medico;
+        this.medicamentos = medicamentos;
+        this.enfermedads = enfermedads;
+        this.signoVitals = signoVitals;
     }
 
     public long getId() {
@@ -66,12 +70,12 @@ public class Paciente {
         this.id = id;
     }
 
-    public String getNombres() {
-        return nombres;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public LocalDate getAnioNacimiento() {
@@ -122,12 +126,12 @@ public class Paciente {
         this.grupoIngresos = grupoIngresos;
     }
 
-    public Boolean getTienePoliza() {
-        return tienePoliza;
+    public Boolean getPoliza() {
+        return poliza;
     }
 
-    public void setTienePoliza(Boolean tienePoliza) {
-        this.tienePoliza = tienePoliza;
+    public void setPoliza(Boolean poliza) {
+        this.poliza = poliza;
     }
 
     public LocalDate getFechaAfiliacion() {
@@ -138,19 +142,55 @@ public class Paciente {
         this.fechaAfiliacion = fechaAfiliacion;
     }
 
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
+
+    public List<Medicamento> getMedicamentos() {
+        return medicamentos;
+    }
+
+    public void setMedicamentos(List<Medicamento> medicamentos) {
+        this.medicamentos = medicamentos;
+    }
+
+    public List<Enfermedad> getEnfermedads() {
+        return enfermedads;
+    }
+
+    public void setEnfermedads(List<Enfermedad> enfermedads) {
+        this.enfermedads = enfermedads;
+    }
+
+    public List<SignoVital> getSignoVitals() {
+        return signoVitals;
+    }
+
+    public void setSignoVitals(List<SignoVital> signoVitals) {
+        this.signoVitals = signoVitals;
+    }
+
     @Override
     public String toString() {
         return "Paciente{" +
                 "id=" + id +
-                ", nombres='" + nombres + '\'' +
+                ", nombre='" + nombre + '\'' +
                 ", anioNacimiento=" + anioNacimiento +
                 ", ciudad='" + ciudad + '\'' +
                 ", correo='" + correo + '\'' +
                 ", telefono='" + telefono + '\'' +
                 ", ips='" + ips + '\'' +
                 ", grupoIngresos='" + grupoIngresos + '\'' +
-                ", tienePoliza=" + tienePoliza +
+                ", poliza=" + poliza +
                 ", fechaAfiliacion=" + fechaAfiliacion +
+                ", medico=" + medico +
+                ", medicamentos=" + medicamentos +
+                ", enfermedads=" + enfermedads +
+                ", signoVitals=" + signoVitals +
                 '}';
     }
 }

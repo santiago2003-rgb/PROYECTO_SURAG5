@@ -20,8 +20,8 @@ public class Medicamento {
     private String laboratorio;
     private LocalDate fechaCaducidad;
     private String contraIndicaciones;
-    private String registro; //regirstroInvima
-    private Boolean tieneCopago; //copago
+    private String registroInvima; //regirstroInvima
+    private Boolean copago; //copago
 
     @ManyToOne
     @JoinColumn(name = "fk_paciente", referencedColumnName = "id")
@@ -31,7 +31,7 @@ public class Medicamento {
     public Medicamento() {
     }
 
-    public Medicamento(Long id, String nombre, String presentacion, Double dosis, String laboratorio, LocalDate fechaCaducidad, String contraIndicaciones, String registro, Boolean tieneCopago) {
+    public Medicamento(Long id, String nombre, String presentacion, Double dosis, String laboratorio, LocalDate fechaCaducidad, String contraIndicaciones, String registroInvima, Boolean copago, Paciente paciente) {
         this.id = id;
         this.nombre = nombre;
         this.presentacion = presentacion;
@@ -39,8 +39,9 @@ public class Medicamento {
         this.laboratorio = laboratorio;
         this.fechaCaducidad = fechaCaducidad;
         this.contraIndicaciones = contraIndicaciones;
-        this.registro = registro;
-        this.tieneCopago = tieneCopago;
+        this.registroInvima = registroInvima;
+        this.copago = copago;
+        this.paciente = paciente;
     }
 
     public Long getId() {
@@ -99,20 +100,28 @@ public class Medicamento {
         this.contraIndicaciones = contraIndicaciones;
     }
 
-    public String getRegistro() {
-        return registro;
+    public String getRegistroInvima() {
+        return registroInvima;
     }
 
-    public void setRegistro(String registro) {
-        this.registro = registro;
+    public void setRegistroInvima(String registroInvima) {
+        this.registroInvima = registroInvima;
     }
 
-    public Boolean getTieneCopago() {
-        return tieneCopago;
+    public Boolean getCopago() {
+        return copago;
     }
 
-    public void setTieneCopago(Boolean tieneCopago) {
-        this.tieneCopago = tieneCopago;
+    public void setCopago(Boolean copago) {
+        this.copago = copago;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
     }
 
     @Override
@@ -125,8 +134,9 @@ public class Medicamento {
                 ", laboratorio='" + laboratorio + '\'' +
                 ", fechaCaducidad=" + fechaCaducidad +
                 ", contraIndicaciones='" + contraIndicaciones + '\'' +
-                ", registro='" + registro + '\'' +
-                ", tieneCopago=" + tieneCopago +
+                ", registroInvima='" + registroInvima + '\'' +
+                ", copago=" + copago +
+                ", paciente=" + paciente +
                 '}';
     }
 }

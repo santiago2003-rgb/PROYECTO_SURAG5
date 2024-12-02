@@ -13,15 +13,15 @@ public class Medico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombres; //35 CARACTERES Y SOLO LETRAS //nombre
+    private String nombre; //35 CARACTERES Y SOLO LETRAS //nombre
     private String matriculaProfesional; //20 CARACTERES
     private String especialidad; //20 CARACTERES
     private String salario; //SOLO POSITIVOS MENOS DE 10 MEGAS Y MAXIMO 20
     private String ips; //50 CARACTERES
     private String correo;
     private String telefono; //12 CARACTERES
-    private String direccion; //50 CARACTERES //DIRECCIONCONSULTORIO
-    private Boolean disponibleFinDeSemana; //FINDESEMANADISPONIBLE
+    private String direccionConsultorio; //50 CARACTERES //DIRECCIONCONSULTORIO
+    private Boolean finDeSemanaDisponible; //FINDESEMANADISPONIBLE
 
     @OneToMany(mappedBy = "medico")
     @JsonManagedReference
@@ -30,17 +30,18 @@ public class Medico {
     public Medico() {
     }
 
-    public Medico(Long id, String nombres, String matriculaProfesional, String especialidad, String salario, String ips, String correo, String telefono, String direccion, Boolean disponibleFinDeSemana) {
+    public Medico(Long id, String nombre, String matriculaProfesional, String especialidad, String salario, String ips, String correo, String telefono, String direccionConsultorio, Boolean finDeSemanaDisponible, List<Paciente> pacientes) {
         this.id = id;
-        this.nombres = nombres;
+        this.nombre = nombre;
         this.matriculaProfesional = matriculaProfesional;
         this.especialidad = especialidad;
         this.salario = salario;
         this.ips = ips;
         this.correo = correo;
         this.telefono = telefono;
-        this.direccion = direccion;
-        this.disponibleFinDeSemana = disponibleFinDeSemana;
+        this.direccionConsultorio = direccionConsultorio;
+        this.finDeSemanaDisponible = finDeSemanaDisponible;
+        this.pacientes = pacientes;
     }
 
     public Long getId() {
@@ -51,12 +52,12 @@ public class Medico {
         this.id = id;
     }
 
-    public String getNombres() {
-        return nombres;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getMatriculaProfesional() {
@@ -107,35 +108,44 @@ public class Medico {
         this.telefono = telefono;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getDireccionConsultorio() {
+        return direccionConsultorio;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setDireccionConsultorio(String direccionConsultorio) {
+        this.direccionConsultorio = direccionConsultorio;
     }
 
-    public Boolean getDisponibleFinDeSemana() {
-        return disponibleFinDeSemana;
+    public Boolean getFinDeSemanaDisponible() {
+        return finDeSemanaDisponible;
     }
 
-    public void setDisponibleFinDeSemana(Boolean disponibleFinDeSemana) {
-        this.disponibleFinDeSemana = disponibleFinDeSemana;
+    public void setFinDeSemanaDisponible(Boolean finDeSemanaDisponible) {
+        this.finDeSemanaDisponible = finDeSemanaDisponible;
+    }
+
+    public List<Paciente> getPacientes() {
+        return pacientes;
+    }
+
+    public void setPacientes(List<Paciente> pacientes) {
+        this.pacientes = pacientes;
     }
 
     @Override
     public String toString() {
         return "Medico{" +
                 "id=" + id +
-                ", nombres='" + nombres + '\'' +
+                ", nombre='" + nombre + '\'' +
                 ", matriculaProfesional='" + matriculaProfesional + '\'' +
                 ", especialidad='" + especialidad + '\'' +
                 ", salario='" + salario + '\'' +
                 ", ips='" + ips + '\'' +
                 ", correo='" + correo + '\'' +
                 ", telefono='" + telefono + '\'' +
-                ", direccion='" + direccion + '\'' +
-                ", disponibleFinDeSemana=" + disponibleFinDeSemana +
+                ", direccionConsultorio='" + direccionConsultorio + '\'' +
+                ", finDeSemanaDisponible=" + finDeSemanaDisponible +
+                ", pacientes=" + pacientes +
                 '}';
     }
 }
